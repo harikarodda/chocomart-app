@@ -11,11 +11,77 @@ import javax.persistence.Table;
 @Table(name="Chocolate_Master")
 public class Chocolates {
 	
+	
+	
 	@Id
 	@GeneratedValue(strategy=  GenerationType.AUTO)
 	@Column (name="Chocolate_ID")
 	int chocolateId;
 	
+	public int getChocolateId() {
+		return chocolateId;
+	}
+
+	public void setChocolateId(int chocolateId) {
+		this.chocolateId = chocolateId;
+	}
+
+	public String getChocolateName() {
+		return chocolateName;
+	}
+
+	public void setChocolateName(String chocolateName) {
+		this.chocolateName = chocolateName;
+	}
+
+	public String getChocolateDescription() {
+		return chocolateDescription;
+	}
+
+	public void setChocolateDescription(String chocolateDescription) {
+		this.chocolateDescription = chocolateDescription;
+	}
+
+	public String getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
+	public String getUpdatedTime() {
+		return updatedTime;
+	}
+
+	public void setUpdatedTime(String updatedTime) {
+		this.updatedTime = updatedTime;
+	}
+
+	public String getAuthorizedBy() {
+		return authorizedBy;
+	}
+
+	public void setAuthorizedBy(String authorizedBy) {
+		this.authorizedBy = authorizedBy;
+	}
+
+	public String getAuthorizedTime() {
+		return authorizedTime;
+	}
+
+	public void setAuthorizedTime(String authorizedTime) {
+		this.authorizedTime = authorizedTime;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
 	@Column(name="Chocolate_name")
 	String chocolateName;
 	
@@ -36,5 +102,9 @@ public class Chocolates {
 	
 	@Column(name="Quantity")
 	int quantity;
+	
+	public Chocolates() {
+		
+	}
 	
 }

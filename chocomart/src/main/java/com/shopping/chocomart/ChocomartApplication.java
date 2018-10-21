@@ -10,9 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
  
 @ComponentScan("com.shopping.*")
-//@EntityScan("com.shopping.entity.*")
 @EntityScan("com.shopping.entity")	
-//@EnableJpaRepositories("com.shopping.repository")
 @EnableJpaRepositories(basePackages="com.shopping.repository")
 @EnableAutoConfiguration
 public class ChocomartApplication {

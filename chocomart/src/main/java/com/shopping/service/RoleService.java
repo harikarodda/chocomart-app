@@ -2,12 +2,14 @@ package com.shopping.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.shopping.entity.Roles;
+import com.shopping.entity.Users;
 import com.shopping.repository.RolesRepository;
 
 @Service
@@ -64,5 +66,36 @@ public class RoleService  implements RoleServiceInterface<Roles> {
 		rl.add(r4);
 		return rl;
 	}
+
+
+	@Override
+	public List<Roles> findAllRoles() {
+		// TODO Auto-generated method stub
+		List<Roles> allRoles = (List<Roles>) roleRepo.findAll();
+				return allRoles;
+	}
+
+
+	@Override
+	public Roles roleTimeUpdate(int iDofRoleToBeUpdated) {
+		// TODO Auto-generated method stub
+		 Roles updatingRole = roleRepo.findByRoleId(iDofRoleToBeUpdated);
+		 updatingRole.setUpdatedTime("12:00PM");
+		 roleRepo.save(updatingRole);
+		return updatingRole;
+	}
+
+
+	@Override
+	public List<Roles> deleteRole(String s) {
+		// TODO Auto-generated method stub
+		List<Roles> deletedRole= roleRepo.findByRoleName("Guest");
+		//roleRepo.saveAll(deletedRole);
+		roleRepo.deleteAll(deletedRole);
+		return deletedRole;
+	}
+
+	
+	 
 
 }
