@@ -4,13 +4,15 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.shopping.entity.Users;
+import com.shopping.entity.UserMaster;
 
-public interface UsersRepository extends CrudRepository<Users, Integer> {
+public interface UsersRepository extends CrudRepository<UserMaster, Integer> {
 
-	Users findByUserId(int userId);
+	UserMaster findByUserId(int userId);
 
-	List<Users> findByCountry(String country);
+	List<UserMaster> findByCountry(String country);
+
+	UserMaster findByUserName(String userName);
 
 	//Users updateUser(int userId);
 

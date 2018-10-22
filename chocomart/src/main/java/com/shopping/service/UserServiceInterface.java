@@ -2,21 +2,24 @@ package com.shopping.service;
 
 import java.util.List;
 
+import com.shopping.entity.UserMaster;
+import com.shopping.model.UserRequest;
+
 public interface UserServiceInterface<Users> {
 	public void addUser();
-	//public Users createUser(Users user);
-	//public Users findUserByUserNmae(String s);
-	public com.shopping.entity.Users findByUserID(int i);
-	public List<com.shopping.entity.Users> findByCountry(String s);
-	public Iterable<com.shopping.entity.Users> getAllUsers();
-	
-	
-	
-	//com.shopping.entity.Users createUser(com.shopping.entity.Users user);
-	
-	public com.shopping.entity.Users updateUser(int id); //basic method
-	  List<Users> createUser();
-	public com.shopping.entity.Users deleteUser(int id);
-	
-	 
+
+	public com.shopping.entity.UserMaster findByUserID(int i);
+
+	public List<com.shopping.entity.UserMaster> findByCountry(String s);
+
+	public Iterable<UserMaster> getAllUsers();
+
+	public com.shopping.entity.UserMaster updateUser(int id); // basic method
+
+	UserMaster createUser(UserRequest userRequest);
+
+	public com.shopping.entity.UserMaster deleteUser(int id);
+
+	public UserMaster getByUserName(String userName);
+
 }

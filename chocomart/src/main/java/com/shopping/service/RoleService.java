@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.shopping.entity.Roles;
-import com.shopping.entity.Users;
+import com.shopping.entity.UserMaster;
 import com.shopping.repository.RolesRepository;
 
 @Service
