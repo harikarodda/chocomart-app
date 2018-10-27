@@ -10,6 +10,6 @@ public interface RolesRepository extends CrudRepository<Roles, Integer> {
 	
  Roles findByRoleId(int roleId);
 
- List<Roles> findByRoleName(String roleName);  
+ Roles findByRoleName(String roleName);  
   
 }

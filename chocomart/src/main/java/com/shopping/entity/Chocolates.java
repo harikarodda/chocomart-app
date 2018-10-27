@@ -1,5 +1,7 @@
 package com.shopping.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -50,12 +52,12 @@ public class Chocolates {
 		this.updatedBy = updatedBy;
 	}
 
-	public String getUpdatedTime() {
+	public Date getUpdatedTime() {
 		return updatedTime;
 	}
 
-	public void setUpdatedTime(String updatedTime) {
-		this.updatedTime = updatedTime;
+	public void setUpdatedTime(Date date) {
+		this.updatedTime = date;
 	}
 
 	public String getAuthorizedBy() {
@@ -92,7 +94,7 @@ public class Chocolates {
 	String updatedBy;
 	
 	@Column(name="Updated_Time")
-	String updatedTime;
+	Date updatedTime;
 	
 	@Column(name="Authorized_By")
 	String authorizedBy;

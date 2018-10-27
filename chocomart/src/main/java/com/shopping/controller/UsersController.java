@@ -34,15 +34,14 @@ public class UsersController {
 		return user;
 
 	}
-	
-/**
+	/**
  * Get all users from database table
  * @return
  */
 	@RequestMapping(value = "/getAllUsers", method = RequestMethod.GET)
 	public Iterable getAllUsers() {
 		Iterable userFound = userService.getAllUsers();
-		System.out.println("Find user by ID");
+		System.out.println("Find all users");
 		return userFound;
 	}
 /**
@@ -57,6 +56,8 @@ public class UsersController {
 		System.out.println("Find user by ID");
 		return userFound;
 	}
+	
+	
 	@RequestMapping(value = "/findIndianUsers", method = RequestMethod.GET)
 	public List<UserMaster> userFoundByCountry() {
 		List<UserMaster> userFind = userService.findByCountry("India");

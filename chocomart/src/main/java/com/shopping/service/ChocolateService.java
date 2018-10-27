@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.shopping.entity.Chocolates;
+import com.shopping.model.ChocolateRequest;
 import com.shopping.repository.ChocolateRepository;
+import com.shopping.util.ChocomartUtility;
 
 @Service
 @Transactional
@@ -20,6 +22,35 @@ public class ChocolateService implements ChocolateServiceInterface<Chocolates> {
 	ChocolateRepository chocoRepo;
 	
 	@Override
+	public Chocolates createChocolates(ChocolateRequest chocReq) {
+		// TODO Auto-generated method stub
+		Chocolates c1 = new Chocolates();
+		c1.setChocolateName(chocReq.getChocolateName());
+		c1.setChocolateDescription(chocReq.getChocolateDescription());
+		c1.setQuantity(chocReq.getQuantity()); //these 3 will be obtained from json
+		c1.setAuthorizedBy("Harika");
+		c1.setUpdatedBy("DP");
+		c1.setUpdatedTime(ChocomartUtility.getCurrentDate());
+	 System.out.println("Saving new chocolate object"+c1.getChocolateName());
+		
+		return chocoRepo.save(c1) ;
+	}
+
+	@Override
+	public Iterable<Chocolates> getAllChocolates() {
+		// TODO Auto-generated method stub
+		return chocoRepo.findAll();
+	}
+
+	@Override
+	public Chocolates getByChocolateName(String chocName) {
+		// TODO Auto-generated method stub
+		return  chocoRepo.findByChocolateName(chocName);
+	}
+	
+	
+	/****************OLD*************************************/
+	/*@Override
 	public List<Chocolates> chocolateCreation() {
 		// TODO Auto-generated method stub
 		
@@ -61,7 +92,8 @@ public class ChocolateService implements ChocolateServiceInterface<Chocolates> {
 		  
 		return chocoList;
 	}
-
+	*/
+	
 	@Override
 	public List<Chocolates> updateQuantity() {
 		// TODO Auto-generated method stub
@@ -80,6 +112,8 @@ public class ChocolateService implements ChocolateServiceInterface<Chocolates> {
 				chocoRepo.delete(ch);		
 		return ch;
 	}
+
+	
  
 	
 	 

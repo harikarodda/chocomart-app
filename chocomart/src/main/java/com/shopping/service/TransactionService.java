@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.shopping.entity.Transactions;
+import com.shopping.model.TransactionRequest;
 import com.shopping.repository.TransactionRepository;
 
 @Service
@@ -21,6 +22,38 @@ public class TransactionService implements TransactionServiceInterface<Transacti
 	TransactionRepository tranRepo;
 
 	@Override
+	public Transactions createTransaction(TransactionRequest transaction) {
+		// TODO Auto-generated method stub
+		Transactions t1= new Transactions();
+		 t1.setTransactionAmount(transaction.gettransactionAmount());
+		 t1.setTransactionDate(transaction.gettransactionDate());
+		 t1.setTransactionBy(transaction.gettransactionBy());
+		//the above 3 will be obtained by the json data
+		t1.setTransactionPromo("DEFAULT");
+		t1.setTransactionStatus("Processing");
+		System.out.println("Saving Object of " + t1.getTransactionID());
+		
+		return tranRepo.save(t1);
+	}
+	
+	@Override
+	public Iterable<Transactions> getAllTransactions() {
+		// TODO Auto-generated method stub
+		return tranRepo.findAll();
+	}
+
+	@Override
+	public Transactions getByTransactionAmount(int amount ) {
+		// TODO Auto-generated method stub
+		return tranRepo.findByTransactionAmount(amount);
+	}
+	
+	
+	
+	
+	
+	/****************************************OLD********************************************************/
+	/*@Override         //old method of creating transactions
 	public List<Transactions> createTransactions() {
 		// TODO Auto-generated method stub
 		Transactions t1= new Transactions();
@@ -93,7 +126,7 @@ public class TransactionService implements TransactionServiceInterface<Transacti
 		tranList.add(trans4);
 		return tranList;
 	}
-
+*/
 	@Override
 	public List<Transactions> updateTransactions() {
 		// TODO Auto-generated method stub
@@ -104,6 +137,10 @@ public class TransactionService implements TransactionServiceInterface<Transacti
 		 tranRepo.saveAll(updateTransactions);
 		return updateTransactions;
 	}
+
+	
+
+	
 	
 	
 	

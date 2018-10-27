@@ -10,7 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.shopping.entity.Roles;
 import com.shopping.entity.UserMaster;
+import com.shopping.model.RoleRequest;
 import com.shopping.repository.RolesRepository;
+import com.shopping.util.ChocomartUtility;
 
 @Service
 @Transactional
@@ -20,7 +22,7 @@ public class RoleService  implements RoleServiceInterface<Roles> {
 	RolesRepository roleRepo;
 	
 	
-	@Override
+	/*@Override
 	public List<Roles> createRole() {
 		// TODO Auto-generated method stub
 		Roles r1= new Roles();
@@ -65,8 +67,31 @@ public class RoleService  implements RoleServiceInterface<Roles> {
 		rl.add(r3);
 		rl.add(r4);
 		return rl;
+	}*/
+	
+	@Override  //1
+	public Roles createRole(RoleRequest role) {  //passing json object converted from http requestbody
+		Roles r1= new Roles();
+		r1.setRoleName(role.getRoleName());
+		r1.setUpdatedBy(role.getRoleUpdatedBy());
+		r1.setAuthoroziedBy(role.getRoleAuthorizedBy()); //these 3 will be returned from http body
+		r1.setAuthorizedTime(ChocomartUtility.getCurrentDate());
+		r1.setUpdatedTime(ChocomartUtility.getCurrentDate());
+		System.out.println("saving object of"+r1.getRoleName());
+		return roleRepo.save(r1);
 	}
-
+	
+	@Override   //2
+	public Iterable<Roles> getAllRoles() {
+		// TODO Auto-generated method stub
+		return roleRepo.findAll();
+	}
+	
+	@Override //3
+	public Roles getByRoleName(String roleName) {
+		// TODO Auto-generated method stub
+		return roleRepo.findByRoleName(roleName);
+	}
 
 	@Override
 	public List<Roles> findAllRoles() {
@@ -80,20 +105,31 @@ public class RoleService  implements RoleServiceInterface<Roles> {
 	public Roles roleTimeUpdate(int iDofRoleToBeUpdated) {
 		// TODO Auto-generated method stub
 		 Roles updatingRole = roleRepo.findByRoleId(iDofRoleToBeUpdated);
-		 updatingRole.setUpdatedTime("12:00PM");
+		 updatingRole.setAuthoroziedBy("Vassu");
 		 roleRepo.save(updatingRole);
 		return updatingRole;
 	}
 
-
 	@Override
-	public List<Roles> deleteRole(String s) {
+	public List<Roles> deleteRole(String roleName) {
 		// TODO Auto-generated method stub
-		List<Roles> deletedRole= roleRepo.findByRoleName("Guest");
-		//roleRepo.saveAll(deletedRole);
-		roleRepo.deleteAll(deletedRole);
-		return deletedRole;
+		return null;
 	}
+
+
+//	@Override
+//	public List<Roles> deleteRole(String s) {
+//		// TODO Auto-generated method stub
+//		List<Roles> deletedRole= roleRepo.findByRoleName("Guest");
+//		//roleRepo.saveAll(deletedRole);
+//		roleRepo.deleteAll(deletedRole);
+//		return deletedRole;
+//	}
+
+	
+
+
+	
 
 	
 	 

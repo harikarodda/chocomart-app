@@ -11,6 +11,12 @@ public interface TransactionRepository extends CrudRepository<Transactions, Inte
 	List<Transactions> findAll();
 	
 	List<Transactions> findByTransactionStatus(String s);
+
+	
+
+	Transactions findByTransactionAmount(int amount);
+
+	//Transactions findByTransactionBy(String nameBehindTransaction);
 	
 	
 	

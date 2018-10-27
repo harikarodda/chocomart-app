@@ -1,5 +1,7 @@
 package com.shopping.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -48,12 +50,12 @@ public class Roles {
 		this.updatedBy = updatedBy;
 	}
 
-	public String getUpdatedTime() {
+	public Date getUpdatedTime() {
 		return updatedTime;
 	}
 
-	public void setUpdatedTime(String updatedTime) {
-		this.updatedTime = updatedTime;
+	public void setUpdatedTime(Date string) {
+		this.updatedTime = string;
 	}
 
 	public String getAuthoroziedBy() {
@@ -64,12 +66,12 @@ public class Roles {
 		this.authoroziedBy = authoroziedBy;
 	}
 
-	public String getAuthorizedTime() {
+	public Date getAuthorizedTime() {
 		return authorizedTime;
 	}
 
-	public void setAuthorizedTime(String authorizedTime) {
-		this.authorizedTime = authorizedTime;
+	public void setAuthorizedTime(Date date) {
+		this.authorizedTime = date;
 	}
 
 	
@@ -85,13 +87,13 @@ public class Roles {
 	String updatedBy;
 	
 	@Column (name="Role_UpdatedTime")
-	String updatedTime;
+	Date updatedTime;
 	
 	@Column (name="Role_AuthorizedBy")
 	String authoroziedBy;
 	
 	@Column (name="Role_AuthorizedTime")
-	String authorizedTime;
+	Date authorizedTime;
 	
 	//getters and setters
 	

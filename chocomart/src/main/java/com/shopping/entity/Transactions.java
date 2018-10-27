@@ -1,6 +1,5 @@
 package com.shopping.entity;
 
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -12,28 +11,28 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name ="Transaction_Master")
+@Table(name = "Transaction_Master")
 public class Transactions {
 	@Id
-	@GeneratedValue(strategy=  GenerationType.AUTO)
-	@Column(name="Transaction_ID")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "Transaction_ID")
 	int transactionID;
-	
-	@Column(name="Transaction_Amount")
+
+	@Column(name = "Transaction_Amount")
 	int transactionAmount;
-	
-	@Column(name="Transaction_Promo")
+
+	@Column(name = "Transaction_Promo")
 	String transactionPromo;
-	
-	@Column(name="Transaction_Status")
+
+	@Column(name = "Transaction_Status")
 	String transactionStatus;
-	
-	@Column(name="Transaction_By")
+
+	@Column(name = "Transaction_By")
 	String TransactionBy;
-	
-	@Column(name="Transaction_DateTime")
+
+	@Column(name = "Transaction_DateTime")
 	String TransactionDate;
-	
+
 	public int getTransactionID() {
 		return transactionID;
 	}
@@ -81,9 +80,9 @@ public class Transactions {
 	public void setTransactionDate(String date) {
 		TransactionDate = date;
 	}
-	
+
 	public Transactions() {
-		
+
 	}
 
 }
